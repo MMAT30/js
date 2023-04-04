@@ -1,2 +1,2 @@
-# js
-Archive of Javascript
+# Javascript & Typescript
+Archive of Javascript & Typescript
