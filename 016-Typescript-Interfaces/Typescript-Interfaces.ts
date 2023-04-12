@@ -74,3 +74,54 @@ const user2: Greetable = {
     }
 }
 console.log(user2);
+
+
+// intersection types || interfaces - combine multiple types || interfaces into one
+type Admin = {
+    name: string;
+    privileges: string[];
+}
+
+type Employee = {
+    name: string;
+    startDate: Date;
+}
+
+// merge the two types || interfaces into one
+type ElevatedEmployee = Admin & Employee;
+
+// create an object of the new type || interface
+const e1: ElevatedEmployee = {
+    name: "John",
+    privileges: ["create-server"],
+    startDate: new Date()
+}
+console.log(e1);
+
+
+// type guards
+type UnknownRole = Admin | Employee;
+
+const TypeCheck = (obj: UnknownRole) => {
+
+    // checking for a property exists in an object
+    if ("privileges" in obj) {
+        console.log("I'm A Admin");
+    } else {
+        console.log("I'm A Employee");
+    }
+}
+
+TypeCheck(e1);
+
+
+// indexed properties
+interface ErrorContainer {
+    [prop: string]: string;
+}
+
+const errorBag: ErrorContainer = {
+    email: "Not a valid email",
+    username: "Must start with a capital character"
+}
+console.log(errorBag);
